@@ -6,7 +6,7 @@ fun <T> sink(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparabl
     var i = index
 
     do {
-        val leftChild = 2 * i
+        val leftChild = 2 * i + 1
         val rightChild = leftChild + 1
 
         val child = when {
@@ -15,10 +15,14 @@ fun <T> sink(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparabl
             else -> rightChild
         }
 
+        if (xs[i] <= xs[child]) {
+            break
+        }
+
         xs[i] = xs[child].also { xs[child] = xs[i] }
 
         i = child
-    } while (leftChild < xs.size)
+    } while (i < xs.size / 2)
 
     return xs
 }
