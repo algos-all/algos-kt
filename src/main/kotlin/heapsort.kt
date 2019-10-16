@@ -26,3 +26,11 @@ fun <T> sink(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparabl
 
     return xs
 }
+
+fun <T> heapify(xs: MutableList<T>): MutableList<T> where T : Comparable<T> {
+    for (i in xs.size / 2 downTo 0) {
+        sink(xs, i)
+    }
+
+    return xs
+}

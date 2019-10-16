@@ -69,4 +69,19 @@ class HeapsortKtTest {
         assertEquals(sink(mutableListOf(1), -1), mutableListOf(1))
         assertEquals(sink(mutableListOf(1), 42), mutableListOf(1))
     }
+
+    @Test
+    fun `heapify works for empty list`() {
+        assertEquals(heapify(mutableListOf<Int>()), mutableListOf<Int>())
+    }
+
+    @Test
+    fun `heapify works for one element`() {
+        assertEquals(heapify(mutableListOf(42)), mutableListOf(42))
+    }
+
+    @Test
+    fun `heapify works for two elements`() {
+        assertEquals(heapify(mutableListOf(43, 42)), mutableListOf(42, 43))
+    }
 }
