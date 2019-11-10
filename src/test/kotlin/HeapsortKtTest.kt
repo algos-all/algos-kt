@@ -24,7 +24,7 @@ class HeapsortKtTest {
 
     @Test
     fun `sink works for two elements (swap)`() {
-        assertEquals(sink(mutableListOf(2, 1), 0), mutableListOf(1, 2))
+        assertEquals(mutableListOf(1, 2), sink(mutableListOf(2, 1), 0))
     }
 
     @Test
@@ -66,22 +66,22 @@ class HeapsortKtTest {
 
     @Test
     fun `sink works for weird indexes (one element)`() {
-        assertEquals(sink(mutableListOf(1), -1), mutableListOf(1))
-        assertEquals(sink(mutableListOf(1), 42), mutableListOf(1))
+        assertEquals(mutableListOf(1), sink(mutableListOf(1), -1))
+        assertEquals(mutableListOf(1), sink(mutableListOf(1), 42))
     }
 
     @Test
     fun `heapify works for empty list`() {
-        assertEquals(heapify(mutableListOf<Int>()), mutableListOf<Int>())
+        assertEquals(mutableListOf<Int>(), heapify(mutableListOf<Int>()))
     }
 
     @Test
     fun `heapify works for one element`() {
-        assertEquals(heapify(mutableListOf(42)), mutableListOf(42))
+        assertEquals(mutableListOf(42), heapify(mutableListOf(42)))
     }
 
     @Test
     fun `heapify works for two elements`() {
-        assertEquals(heapify(mutableListOf(43, 42)), mutableListOf(42, 43))
+        assertEquals(mutableListOf(42, 43), heapify(mutableListOf(43, 42)))
     }
 }
