@@ -25,20 +25,19 @@ fun <T> sink(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparabl
 }
 
 fun <T> sink(xs: MutableList<T>, index: Int, comparator: Comparator<T>): MutableList<T> {
-    if (index < 0 || xs.size <= 2 * index + 1) {
-        return xs
+    if (index < 0 || index >= xs.size) {
+        throw IllegalArgumentException("index must be in [0, xs.size), was $index, which is not in [0, ${xs.size})")
     }
 
-    var i = index
+    var (i, lftChild) = listOf(index, 2 * index + 1)
 
-    do {
-        val leftChild = 2 * i + 1
-        val rightChild = leftChild + 1
+    while (lftChild < xs.size) {
+        val rgtChild = lftChild + 1
 
-        val child = when {
-            rightChild == xs.size -> leftChild
-            comparator.compare(xs[leftChild], xs[rightChild]) < 0 -> leftChild
-            else -> rightChild
+        val child = if (rgtChild < xs.size && comparator.compare(xs[rgtChild], xs[lftChild]) < 0) {
+            rgtChild
+        } else {
+            lftChild
         }
 
         if (comparator.compare(xs[i], xs[child]) <= 0) {
@@ -47,8 +46,8 @@ fun <T> sink(xs: MutableList<T>, index: Int, comparator: Comparator<T>): Mutable
 
         xs[i] = xs[child].also { xs[child] = xs[i] }
 
-        i = child
-    } while (xs.size > 2 * i + 1)
+        i = child; lftChild = 2 * child + 1
+    }
 
     return xs
 }

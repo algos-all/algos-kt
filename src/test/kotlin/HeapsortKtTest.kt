@@ -1,6 +1,6 @@
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -59,15 +59,15 @@ class HeapsortKtTest {
     }
 
     @Test
-    fun `sink works for weird indexes`() {
-        assert(sink(mutableListOf<Int>(), -1).isEmpty())
-        assert(sink(mutableListOf<Int>(), 42).isEmpty())
+    fun `sink throws for weird indexes (empty collection)`() {
+        assertThrows(IllegalArgumentException::class.java) { sink(mutableListOf<Int>(), -1) }
+        assertThrows(IllegalArgumentException::class.java) { sink(mutableListOf<Int>(), 42) }
     }
 
     @Test
-    fun `sink works for weird indexes (one element)`() {
-        assertEquals(mutableListOf(1), sink(mutableListOf(1), -1))
-        assertEquals(mutableListOf(1), sink(mutableListOf(1), 42))
+    fun `sink throws for weird indexes (one element)`() {
+        assertThrows(IllegalArgumentException::class.java) { sink(mutableListOf(1), -1) }
+        assertThrows(IllegalArgumentException::class.java) { sink(mutableListOf(1), 42) }
     }
 
     @Test
