@@ -25,7 +25,7 @@ fun <T> sink(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparabl
 }
 
 fun <T> sink(xs: MutableList<T>, index: Int, comparator: Comparator<T>): MutableList<T> {
-    if (index < 0 || index >= xs.size) {
+    if (index < 0 || index >= xs.size && index != 0) {
         throw IllegalArgumentException("index must be in [0, xs.size), was $index, which is not in [0, ${xs.size})")
     }
 
