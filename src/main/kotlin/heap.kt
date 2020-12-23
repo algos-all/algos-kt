@@ -13,9 +13,18 @@ class Heap<T> where T : Comparable<T> {
     constructor(collection: MutableCollection<T>) : this() {
         elements.addAll(collection)
 
-        for (i in elements.size / 2 until 0) {
-            sink(elements, i)
-        }
+        heapify(elements)
+    }
+
+    constructor(collection: MutableCollection<T>, comparator: Comparator<T>): this() {
+        elements.addAll(collection)
+        this.comparator = comparator
+
+        heapify(elements, comparator)
+    }
+
+    fun isEmpty(): Boolean {
+        return elements.isEmpty()
     }
 
     fun add(element: T) {
