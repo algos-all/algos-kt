@@ -1,6 +1,6 @@
 class Heap<T> where T : Comparable<T> {
     private val elements: MutableList<T> = mutableListOf()
-    private var comparator: Comparator<T>?
+    private var comparator: Comparator<T>
 
     constructor() {
         comparator = Comparator { x, y -> x.compareTo(y) }
@@ -30,7 +30,7 @@ class Heap<T> where T : Comparable<T> {
     fun add(element: T) {
         elements.add(element)
 
-        swim(elements, elements.lastIndex)
+        swim(elements, elements.lastIndex, comparator)
     }
 
     fun peek(): T? {
@@ -50,7 +50,7 @@ class Heap<T> where T : Comparable<T> {
 
         element = elements[0].also { elements[0] = element }
 
-        sink(elements, 0)
+        sink(elements, 0, comparator)
 
         return element
     }
