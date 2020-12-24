@@ -3,16 +3,20 @@ fun <T> swim(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparabl
 }
 
 fun <T> swim(xs: MutableList<T>, index: Int, comparator: Comparator<T>): MutableList<T> {
+    if (index < 0 || index >= xs.size && index != 0) {
+        throw IllegalArgumentException("index must be in [0, xs.size), was $index, which is not in [0, ${xs.size})")
+    }
+
     var i = index
 
     while (i != 0) {
         val parent = (i - 1) / 2
 
-        if (comparator.compare(xs[parent], xs[index]) <= 0) {
+        if (comparator.compare(xs[parent], xs[i]) <= 0) {
             break
         }
 
-        xs[parent] = xs[index].also { xs[index] = xs[parent] }
+        xs[parent] = xs[i].also { xs[i] = xs[parent] }
 
         i = parent
     }
