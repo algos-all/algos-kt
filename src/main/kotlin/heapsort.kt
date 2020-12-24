@@ -1,5 +1,5 @@
 fun <T> swim(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparable<T> {
-    return swim(xs, index, Comparator { x, y -> x.compareTo(y) })
+    return swim(xs, index) { x, y -> x.compareTo(y) }
 }
 
 fun <T> swim(xs: MutableList<T>, index: Int, comparator: Comparator<T>): MutableList<T> {
@@ -21,7 +21,7 @@ fun <T> swim(xs: MutableList<T>, index: Int, comparator: Comparator<T>): Mutable
 }
 
 fun <T> sink(xs: MutableList<T>, index: Int): MutableList<T> where T : Comparable<T> {
-    return sink(xs, index, Comparator { x, y -> x.compareTo(y) })
+    return sink(xs, index) { x, y -> x.compareTo(y) }
 }
 
 fun <T> sink(xs: MutableList<T>, index: Int, comparator: Comparator<T>): MutableList<T> {
@@ -53,7 +53,7 @@ fun <T> sink(xs: MutableList<T>, index: Int, comparator: Comparator<T>): Mutable
 }
 
 fun <T> heapify(xs: MutableList<T>): MutableList<T> where T : Comparable<T> {
-    return heapify(xs, Comparator { x, y -> x.compareTo(y) })
+    return heapify(xs) { x, y -> x.compareTo(y) }
 }
 
 fun <T> heapify(xs: MutableList<T>, comparator: Comparator<T>): MutableList<T> {
