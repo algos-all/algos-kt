@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.RepeatedTest
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.math.pow
 import kotlin.math.roundToInt
@@ -35,5 +36,14 @@ class FastPowerTest {
                 "${fastPower(x, n)} is not ${x.toDouble().pow(n).roundToInt()}"
             }
         }
+    }
+
+    @Test
+    fun `fast power for powers of two`() {
+        functions.forEach { fastPower -> assert(fastPower(2, 6) == 64) }
+        functions.forEach { fastPower -> assert(fastPower(2, 7) == 128) }
+        functions.forEach { fastPower -> assert(fastPower(2, 8) == 256) }
+        functions.forEach { fastPower -> assert(fastPower(2, 9) == 512) }
+        functions.forEach { fastPower -> assert(fastPower(2, 10) == 1024) }
     }
 }
