@@ -50,3 +50,15 @@ fun zFunction(s: String): IntArray {
     }
     return zs
 }
+
+fun searchZ(text: String, pattern: String): Int {
+    val zs = zFunction(pattern + text)
+
+    for (i in text.indices) {
+        if (zs[pattern.length + i] >= pattern.length) {
+            return i
+        }
+    }
+
+    return text.length
+}
