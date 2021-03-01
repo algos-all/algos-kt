@@ -33,11 +33,15 @@ fun bfs(graph: Graph, nodes: HashSet<Int>): List<Int> {
         val nextRound = HashSet<Int>()
 
         for (node in nodes) {
-            skips.add(node)
-            order.add(node)
+            if (!skips.contains(node)) {
+                skips.add(node)
+                order.add(node)
 
-            graph[node]?.filter { !skips.contains(it) }?.forEach {
-                nextRound.add(it)
+                graph[node]?.forEach {
+                    if (!skips.contains(it)) {
+                        nextRound.add(it)
+                    }
+                }
             }
         }
 
