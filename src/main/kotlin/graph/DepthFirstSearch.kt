@@ -49,13 +49,17 @@ fun dfs(graph: Graph, nodes: HashSet<Int>, skips: HashSet<Int>): List<Int> {
     val order = mutableListOf<Int>()
 
     for (node in nodes) {
-        skips.add(node)
+        if (!skips.contains(node)) {
+            skips.add(node)
 
-        graph[node]?.filter { !skips.contains(it) }?.forEach{
-            order.addAll(dfs(graph, it, skips))
+            graph[node]?.forEach {
+                if (!skips.contains(it)) {
+                    order.addAll(dfs(graph, hashSetOf(it), skips))
+                }
+            }
+
+            order.add(node)
         }
-
-        order.add(node)
     }
 
     return order

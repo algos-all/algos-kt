@@ -3,9 +3,7 @@ package graph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import strikt.api.expectThat
-import strikt.assertions.containsExactly
-import strikt.assertions.isA
-import strikt.assertions.isEmpty
+import strikt.assertions.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TestDepthFirstSearch {
@@ -62,5 +60,21 @@ class TestDepthFirstSearch {
         expectThat(dfs(graph, 2))
             .isA<List<Int>>()
             .containsExactly(4, 3, 2)
+    }
+
+    @Test
+    fun `fully connected square`() {
+        val graph = Graph()
+        graph[1] = mutableListOf(2, 3, 4)
+        graph[2] = mutableListOf(1, 3, 4)
+        graph[3] = mutableListOf(1, 2, 4)
+        graph[4] = mutableListOf(1, 2, 3)
+
+        for (source in (1 .. 4)) {
+            expectThat(dfs(graph, source))
+                .isA<List<Int>>()
+                .hasSize(4)
+                .contains(1, 2, 3, 4)
+        }
     }
 }
