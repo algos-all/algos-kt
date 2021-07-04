@@ -38,6 +38,17 @@ class FastPowerTest {
         }
     }
 
+    @RepeatedTest(value = 256)
+    fun `fast power (large power)`() {
+        val x = (2..3).random()
+        val n = (2..15).random()
+        functions.forEach{ fastPower ->
+            assert(fastPower(x, n) == x.toDouble().pow(n).roundToInt()) {
+                "${fastPower(x, n)} is not ${x.toDouble().pow(n).roundToInt()}"
+            }
+        }
+    }
+
     @Test
     fun `fast power for powers of two`() {
         functions.forEach { fastPower -> assert(fastPower(2, 6) == 64) }
