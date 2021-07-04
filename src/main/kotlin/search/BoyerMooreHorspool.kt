@@ -3,8 +3,13 @@ package search
 /**
  * Implement the Boyer-Moore-Horspool string search algorithm
  *
- * Worst-case complexity is O(nm): on a case where a needle of an 'a' byte followed by n - 1 'z' bytes in a haystack
- * consisting of m 'z' bytes. This will do n - 1 successful comparisons, then fail, advance one character and repeat.
+ * Worst-case complexity is O(nm). It is reached on the following input data:
+ *  - a needle of an 'a' char followed by n - 1 'z' chars
+ *  - a haystack that consists exclusively of 'z' chars
+ * This leads to n - 1 successful comparisons, then a failure. The search then
+ * advances one character and the comparisons repeat.
+ *
+ * The more robust version of this algorithm is Boyer-Moore
  *
  * @return if the pattern was found, return the index
  *         otherwise, return the length of the text
