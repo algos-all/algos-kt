@@ -7,7 +7,7 @@ typealias Graph = HashMap<Int, MutableList<Int>>
  *
  * See: https://en.wikipedia.org/wiki/Glossary_of_graph_theory#transpose
  */
-fun transpose(graph: Graph): Graph {
+fun transposeV1(graph: Graph): Graph {
     val result = Graph()
 
     for ((source, nodes) in graph.entries) {
@@ -16,6 +16,21 @@ fun transpose(graph: Graph): Graph {
         for (node in nodes) {
             result.putIfAbsent(node, mutableListOf())
             result[node]?.add(source)
+        }
+    }
+
+    return result
+}
+
+fun transposeV2(graph: Graph): Graph {
+    val result = Graph()
+
+    for (node in graph.keys) {
+        result.putIfAbsent(node, mutableListOf())
+
+        graph[node]?.forEach {
+            result.putIfAbsent(it, mutableListOf())
+            result[it]?.add(node)
         }
     }
 

@@ -9,7 +9,7 @@ import strikt.assertions.*
 class TestGraph {
     @Test
     fun `empty graph`() {
-        assert(transpose(Graph()).isEmpty())
+        assert(transposeV2(Graph()).isEmpty())
     }
 
     @Test
@@ -17,7 +17,7 @@ class TestGraph {
         val graphOne = Graph()
         graphOne[42] = mutableListOf()
 
-        val graphTwo = transpose(graphOne)
+        val graphTwo = transposeV2(graphOne)
 
         expectThat(graphTwo)
             .hasSize(1)
@@ -34,7 +34,7 @@ class TestGraph {
         graphOne[43] = mutableListOf()
         graphOne[42]?.add(43)
 
-        val graphTwo = transpose(graphOne)
+        val graphTwo = transposeV2(graphOne)
 
         expectThat(graphTwo)
             .isA<Graph>()
@@ -55,7 +55,7 @@ class TestGraph {
         graphOne[42] = mutableListOf(43)
         graphOne[43] = mutableListOf(42)
 
-        val graphTwo = transpose(graphOne)
+        val graphTwo = transposeV2(graphOne)
 
         expectThat(graphTwo)
             .isA<Graph>()

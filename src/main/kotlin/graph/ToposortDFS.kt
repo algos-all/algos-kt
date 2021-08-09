@@ -11,7 +11,7 @@ package graph
  * @see: https://en.wikipedia.org/wiki/Topological_sorting#Depth-first_search
  */
 fun toposortDFS(graph: Graph): List<Int> {
-    val transposed = transpose(graph)
+    val transposed = transposeV2(graph)
     val initial = graph.keys.filter { transposed[it]?.isEmpty() == true }
     return dfs(graph, initial.toHashSet()).reversed()
 }
