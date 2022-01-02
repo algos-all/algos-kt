@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.4.20"
+    kotlin("jvm") version "1.6.10"
 }
 
 repositories {
@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.strikt:strikt-core:0.29.0")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    testImplementation("io.strikt:strikt-core:0.33.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
 }
 
 tasks.withType<KotlinCompile> {
