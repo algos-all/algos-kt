@@ -1,3 +1,7 @@
+package math
+
+import fpow0
+import fpow1
 import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
