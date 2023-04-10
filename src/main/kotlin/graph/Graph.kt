@@ -1,5 +1,8 @@
 package graph
 
+/**
+ * Type to represent a directed graph
+ */
 typealias Graph = HashMap<Int, MutableList<Int>>
 
 /**
@@ -22,6 +25,11 @@ fun transposeV1(graph: Graph): Graph {
     return result
 }
 
+/**
+ * Given a directed graph, reverse all edges in it
+ *
+ * See: https://en.wikipedia.org/wiki/Glossary_of_graph_theory#transpose
+ */
 fun transposeV2(graph: Graph): Graph {
     val result = Graph()
 
