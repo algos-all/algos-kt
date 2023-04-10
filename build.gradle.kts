@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
-val versionJUnit = "5.8.2"
-val versionStrikt = "0.33.0"
+val versionJUnit = "5.9.2"
+val versionStrikt = "0.34.0"
 
 plugins {
     java
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.8.20"
 }
 
 repositories {
@@ -20,7 +20,7 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 }
 
 tasks.withType<Test>().configureEach {
