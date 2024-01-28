@@ -1,12 +1,9 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-
-val versionJUnit = "5.9.2"
-val versionStrikt = "0.34.0"
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.8.20"
+    alias(libs.plugins.jvm)
 }
 
 repositories {
@@ -14,10 +11,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.strikt:strikt-core:$versionStrikt")
-    testImplementation(platform("org.junit:junit-bom:$versionJUnit"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(libs.strikt.core) {
+        because("Add fluent assertThat statements")
+    }
+    testImplementation(libs.junit.jupiter) {
+        because("Use unit test framework")
+    }
+    testRuntimeOnly(libs.junit.platform.launcher) {
+        because("Run unit test framework")
+    }
 }
 
 tasks.withType<KotlinCompile> {
