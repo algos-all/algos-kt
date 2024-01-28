@@ -32,41 +32,43 @@ tasks.withType<Test>().configureEach {
         events("skipped", "failed")
     }
 
-    addTestListener(object: TestListener {
-        override fun beforeSuite(suite: TestDescriptor?) {
+    addTestListener(CustomTestListener())
+}
+
+class CustomTestListener : TestListener {
+    override fun beforeSuite(suite: TestDescriptor?) {
+    }
+
+    override fun afterSuite(suite: TestDescriptor?, result: TestResult?) {
+        logger.trace("Enter afterSuite(suite, result)")
+
+        if (suite == null) {
+            logger.error("TestDescriptor is null, this is a bug!")
+            return
+        }
+        if (result == null) {
+            logger.error("TestResult is null, this is a bug!")
+            return
         }
 
-        override fun afterSuite(suite: TestDescriptor?, result: TestResult?) {
-            logger.trace("Enter afterSuite(suite, result)")
+        // This happens once at the end, when there is no parent test suite
+        if (suite.parent == null) {
+            val message = "  Total: ${result.testCount}"
+            val success = "Success: ${result.successfulTestCount}"
+            val skipped = "Skipped: ${result.skippedTestCount}"
+            val failure = "Failure: ${result.failedTestCount}"
+            val verdict = "Verdict: ${result.resultType}"
 
-            if (suite == null) {
-                logger.error("TestDescriptor is null, this is a bug!")
-                return
-            }
-            if (result == null) {
-                logger.error("TestResult is null, this is a bug!")
-                return
-            }
-
-            // This happens once at the end, when there is no parent test suite
-            if (suite.parent == null) {
-                val message = "  Total: ${result.testCount}"
-                val success = "Success: ${result.successfulTestCount}"
-                val skipped = "Skipped: ${result.skippedTestCount}"
-                val failure = "Failure: ${result.failedTestCount}"
-                val verdict = "Verdict: ${result.resultType}"
-
-                logger.warn("$message\n$success\n$skipped\n$failure\n$verdict")
-                return
-            }
-
-            logger.trace("Leave afterSuite(suite, result) (ok)")
+            logger.warn("$message\n$success\n$skipped\n$failure\n$verdict")
+            return
         }
 
-        override fun beforeTest(suite: TestDescriptor?) {
-        }
+        logger.trace("Leave afterSuite(suite, result) (ok)")
+    }
 
-        override fun afterTest(suite: TestDescriptor?, result: TestResult?) {
-        }
-    })
+    override fun beforeTest(suite: TestDescriptor?) {
+    }
+
+    override fun afterTest(suite: TestDescriptor?, result: TestResult?) {
+    }
 }
