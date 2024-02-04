@@ -3,6 +3,7 @@ package core
 import org.junit.jupiter.api.Test
 
 class TestMap {
+
     @Test
     fun testGetOrElse() {
         val map = HashMap<Int, Int>()
@@ -38,13 +39,169 @@ class TestMap {
 
     @Test
     fun testComputeIfAbsent() {
-        val map = mutableMapOf<Int, Int>()
+        val map = HashMap<Int, Int>()
         map[42] = 42
         val result0 = map.computeIfAbsent(42) { _ -> 44 }
         val result1 = map.computeIfAbsent(13) { _ -> 44 }
         assert(result0 == 42) { "$result0 is not null" }
         assert(result1 == 44) { "$result1 is not null" }
         assert(map[13] == 44) { "map[13] has the computed value" }
+    }
+
+    @Test
+    fun testForEach() {
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        map.forEach { (key, value) ->
+            assert(map[key] == value)
+        }
+    }
+
+    @Test
+    fun testForLoop() {
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        for ((key, value) in map) {
+            assert(map[key] == value)
+        }
+    }
+
+    @Test
+    fun testMaxBy() {
+        // Given a non-empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the largest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.maxBy { it.value }
+
+        assert(entry.key == 44)
+        assert(entry.value == 44)
+    }
+
+    @Test
+    fun testMaxByOrNull() {
+        // Given a possibly empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the largest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.maxByOrNull { it.value }
+
+        assert(entry != null)
+        assert(entry?.key == 44)
+        assert(entry?.value == 44)
+    }
+
+    @Test
+    fun testMinBy() {
+        // Given a non-empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the smallest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.minBy { it.value }
+
+        assert(entry.key == 42)
+        assert(entry.value == 42)
+    }
+
+    @Test
+    fun testMinByOrNull() {
+        // Given a possibly empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the smallest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.minByOrNull { it.value }
+
+        assert(entry != null)
+        assert(entry?.key == 42)
+        assert(entry?.value == 42)
+    }
+
+    @Test
+    fun testMaxWith() {
+        // Given a possibly empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the largest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.maxWith { lft, rgt -> lft.value.compareTo(rgt.value) }
+
+        assert(entry.key == 44)
+        assert(entry.value == 44)
+    }
+
+    @Test
+    fun testMaxWithOrNull() {
+        // Given a possibly empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the largest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.maxWithOrNull { lft, rgt -> lft.value.compareTo(rgt.value) }
+
+        assert(entry != null)
+        assert(entry?.key == 44)
+        assert(entry?.value == 44)
+    }
+
+    @Test
+    fun testMinWith() {
+        // Given a possibly empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the largest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.minWith { lft, rgt -> lft.value.compareTo(rgt.value) }
+
+        assert(entry.key == 42)
+        assert(entry.value == 42)
+    }
+
+    @Test
+    fun testMinWithOrNull() {
+        // Given a possibly empty map:
+        val map = HashMap<Int, Int>()
+        map[42] = 42
+        map[43] = 43
+        map[44] = 44
+
+        // How to find the entry yielding the largest value of the given function?
+        // Assume the function to be the value of the map entry:
+        val entry = map.minWithOrNull { lft, rgt -> lft.value.compareTo(rgt.value) }
+
+        assert(entry != null)
+        assert(entry?.key == 42)
+        assert(entry?.value == 42)
     }
 
     @Test
