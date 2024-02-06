@@ -5,6 +5,14 @@ import org.junit.jupiter.api.Test
 class TestMap {
 
     @Test
+    fun test() {
+        val map = mutableMapOf<Int, Int>()
+        map[42] = 84
+        map[43] = 86
+        map[44] = 88
+    }
+
+    @Test
     fun testMultiMapGetOrElse() {
         val map = mutableMapOf<Int, MutableList<Int>>()
         map.getOrElse(42) { mutableListOf() }.add(43)

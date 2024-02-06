@@ -36,15 +36,4 @@ class TestMapGet {
         assert(result1 == 44) { "$result1 is not null" }
         assert(map[13] == 44) { "map[13] has the computed value" }
     }
-
-    @Test
-    fun testComputeIfAbsent() {
-        val map = HashMap<Int, Int>()
-        map[42] = 42
-        val result0 = map.computeIfAbsent(42) { _ -> 44 }
-        val result1 = map.computeIfAbsent(13) { _ -> 44 }
-        assert(result0 == 42) { "$result0 is not null" }
-        assert(result1 == 44) { "$result1 is not null" }
-        assert(map[13] == 44) { "map[13] has the computed value" }
-    }
 }
