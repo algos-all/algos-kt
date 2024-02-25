@@ -6,30 +6,40 @@ class TestMapMerge {
 
     @Test
     fun testMergeToCreate() {
-        val map = mutableMapOf<Int, Int>()
+        // Given a map:
+        val map = mutableMapOf<Int, List<Int>>()
 
-        val result = map.merge(42, 84) { _, value -> value + value }
+        // What will the following code produce? What will be the state of the map?
+        val result = map.merge(42, listOf(42)) { lft, rgt ->
+            lft + rgt
+        }
 
-        assert(result == 84)
-        assert(map[42] == 84)
+        assert(result == listOf(42)) { "$result" }
+        assert(map[42] == listOf(42)) { "${map[42]}" }
     }
 
     @Test
     fun testMergeToUpdate() {
-        val map = mutableMapOf<Int, Int>()
-        map[42] = 84
+        // Given a map:
+        val map = mutableMapOf<Int, List<Int>>()
+        map[42] = listOf(84)
 
-        val result = map.merge(42, 84) { _, value -> value + value }
+        // What will the following code produce? What will be the state of the map?
+        val result = map.merge(42, listOf(96)) { lft, rgt ->
+            lft + rgt
+        }
 
-        assert(result == 84 + 84)
-        assert(map[42] == 84 + 84)
+        assert(result == listOf(96, 84)) { "$result" }
+        assert(map[42] == listOf(96, 84)) { "${map[42]}" }
     }
 
     @Test
     fun testMergeToDelete() {
+        // Given a map:
         val map = mutableMapOf<Int, Int>()
         map[42] = 84
 
+        // What will the following code produce? What will be the state of the map?
         val result = map.merge(42, 84) { _, _ -> null }
 
         assert(result == null)
