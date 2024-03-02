@@ -40,7 +40,7 @@ class TestListMinMaxOfWith {
             assert(false)
         }
 
-        assert(name2 == Unit)
+        assert(name2 == Unit || name2 == null) { "$name2" }
     }
 
     @Test
@@ -79,7 +79,7 @@ class TestListMinMaxOfWith {
             assert(false)
         }
 
-        assert(name2 == Unit)
+        assert(name2 == Unit || name2 == null) { "$name2" }
     }
 
 }

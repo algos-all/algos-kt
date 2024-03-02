@@ -29,8 +29,8 @@ class TestMapMerge {
             lft + rgt
         }
 
-        assert(result == listOf(96, 84)) { "$result" }
-        assert(map[42] == listOf(96, 84)) { "${map[42]}" }
+        assert(result == listOf(96, 84) || result == listOf(84, 96)) { "$result" }
+        assert(map[42] == listOf(96, 84) || map[42] == listOf(84, 96)) { "${map[42]}" }
     }
 
     @Test

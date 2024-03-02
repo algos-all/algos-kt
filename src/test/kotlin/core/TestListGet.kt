@@ -3,7 +3,6 @@ package core
 import org.junit.jupiter.api.Test
 
 class TestListGet {
-
     @Test
     fun testGetOrElse() {
         // Given a non-empty list:
@@ -17,6 +16,6 @@ class TestListGet {
         val result1 = xs.getOrElse(9) { idx -> idx * idx }
 
         assert(result0 == 44)
-        assert(result1 == 99)
+        assert(result1 == 81)
     }
 }
