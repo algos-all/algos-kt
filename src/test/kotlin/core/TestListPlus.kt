@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 class TestListPlus {
 
     @Test
-    fun testListMergeWithPlus() {
+    fun testListPlus() {
         // Given two lists:
         val xs = listOf(1, 2, 3)
         val ys = listOf(4, 5, 6)
@@ -20,7 +20,7 @@ class TestListPlus {
     }
 
     @Test
-    fun testListMergeWithPlusAssign() {
+    fun testListPlusAssign() {
         // Given two lists:
         var xs = listOf(1, 2, 3)
         val ys = listOf(4, 5, 6)
@@ -33,7 +33,7 @@ class TestListPlus {
     }
 
     @Test
-    fun testMutableListMergeWithPlusAssign() {
+    fun testMutableListPlusAssign() {
         // Given two lists:
         val xs = mutableListOf(1, 2, 3)
         val ys = mutableListOf(4, 5, 6)
