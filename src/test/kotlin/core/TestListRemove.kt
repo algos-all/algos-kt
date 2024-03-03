@@ -21,10 +21,10 @@ class TestListRemove {
         val xs = mutableListOf(1, 2, 3, 2, 4, 2)
 
         // Q: What will the following code produce? What will be the state of the list?
-        val result = xs.removeAll(listOf(2))
+        val result = xs.removeAll(listOf(1, 2, 3))
 
         assert(result)
-        assert(xs == listOf(1, 3, 4)) { "$xs" }
+        assert(xs == listOf(4)) { "$xs" }
     }
 
     @Test

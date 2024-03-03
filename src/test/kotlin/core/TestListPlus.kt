@@ -11,6 +11,7 @@ class TestListPlus {
         val ys = listOf(4, 5, 6)
 
         // Q: How to merge these two lists together? Will that create new lists?
+        // Q: you are *not* allowed to use `addAll` (the lists are not mutable!)
         // A: Yes, in both cases this creates a brand-new list:
         val ms = xs + ys
         val ns = ys + xs
@@ -25,10 +26,10 @@ class TestListPlus {
         var xs = listOf(1, 2, 3)
         val ys = listOf(4, 5, 6)
 
-        // Q: How to merge these two lists together? Will that create new lists?
-        // A: Yes, this creates a new list first and then re-assigns it to `xs`:
+        // Q: What is the result of the following code? Why does it work?
         xs += ys
 
+        // A: it works because an intermediate list is created first, and then assigned
         assert(xs == listOf(1, 2, 3, 4, 5, 6))
     }
 

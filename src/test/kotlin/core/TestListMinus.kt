@@ -23,6 +23,7 @@ class TestListMinus {
         // Q: What is the result of the following code? Why does it work?
         xs -= listOf(2)
 
+        // A: it works because an intermediate list is created first, and then assigned
         assert(xs == listOf(1, 3, 4))
     }
 
