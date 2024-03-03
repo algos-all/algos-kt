@@ -50,7 +50,7 @@ class TestListMinMaxOf {
 
         val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
 
-        // How to find the smallest product price in the list?
+        // How to find the largest product price in the list?
         // Warning: the empty-case exception is possible!
         val price = products.maxOf { it.price }
 
