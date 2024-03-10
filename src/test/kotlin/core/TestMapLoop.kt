@@ -12,7 +12,7 @@ class TestMapLoop {
         map[43] = 43
         map[44] = 44
 
-        // How to iterate over its key value pairs without a for loop?
+        // Q: How to iterate over its key value pairs without a for loop?
         map.forEach { (key, value) ->
             assert(map[key] == value)
         }
@@ -26,7 +26,7 @@ class TestMapLoop {
         map[43] = 43
         map[44] = 44
 
-        // How to iterate over its key value pairs with a for loop?
+        // Q: How to iterate over its key value pairs with a for loop?
         for ((key, value) in map) {
             assert(map[key] == value)
         }
@@ -40,7 +40,7 @@ class TestMapLoop {
         map[43] = 43
         map[44] = 44
 
-        // How to iterate over its key value pairs with a for loop?
+        // Q: How to iterate over its key value pairs with a for loop?
         for ((key, value) in map.entries) {
             assert(map[key] == value)
         }
