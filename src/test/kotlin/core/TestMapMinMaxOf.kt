@@ -6,49 +6,115 @@ class TestMapMinMaxOf {
 
     @Test
     fun testMaxOf() {
-        val map = HashMap<Int, Int>()
-        map[42] = 84
-        map[43] = 86
-        map[44] = 88
+        // Given a non-empty map:
+        data class Product(val name: String, val price: Int)
 
-        val value = map.maxOf { it.value }
+        val map = HashMap<Int, Product>()
+        map[42] = Product("apple", 42)
+        map[43] = Product("banana", 43)
+        map[44] = Product("mango", 44)
 
-        assert(value == 88)
+        // Q: How to find the largest price for all products?
+        val price = map.maxOf { entry -> entry.value.price }
+
+        assert(price == 44)
     }
 
     @Test
     fun testMaxOfOrNull() {
-        val map = HashMap<Int, Int>()
-        map[42] = 84
-        map[43] = 86
-        map[44] = 88
+        // Given a non-empty map:
+        data class Product(val name: String, val price: Int)
 
-        val value = map.maxOfOrNull { it.value }
+        val map = HashMap<Int, Product>()
+        map[42] = Product("apple", 42)
+        map[43] = Product("banana", 43)
+        map[44] = Product("mango", 44)
 
-        assert(value == 88)
+        // Q: How to find the largest price for all products? Allow null to be returned.
+        val price = map.maxOfOrNull { entry -> entry.value.price }
+
+        assert(price == 44)
+    }
+
+    @Test
+    fun testMaxOfEmptyCase() {
+        // Given a non-empty map:
+        data class Product(val name: String, val price: Int)
+
+        val map = HashMap<Int, Product>()
+
+        // Q: How to handle an empty map when searching for largest price?
+
+        // Approach 1: allow null to be returned:
+        val price1 = map.maxOfOrNull { it.value.price }
+        assert(price1 == null)
+
+        // Approach 2: catch the empty-case exception:
+        val price2 = try {
+            map.maxOf { it.value.price }
+        } catch (e: NoSuchElementException) {
+            assert(true)
+        } catch (e: Throwable) {
+            assert(false)
+        }
+
+        assert(price2 == Unit)
     }
 
     @Test
     fun testMinOf() {
-        val map = HashMap<Int, Int>()
-        map[42] = 84
-        map[43] = 86
-        map[44] = 88
+        // Given a non-empty map:
+        data class Product(val name: String, val price: Int)
 
-        val value = map.minOf { it.value }
+        val map = HashMap<Int, Product>()
+        map[42] = Product("apple", 42)
+        map[43] = Product("banana", 43)
+        map[44] = Product("mango", 44)
 
-        assert(value == 84)
+        // Q: How to find the smallest price for all products?
+        val price = map.minOf { entry -> entry.value.price }
+
+        assert(price == 42)
     }
 
     @Test
     fun testMinOfOrNull() {
-        val map = HashMap<Int, Int>()
-        map[42] = 84
-        map[43] = 86
-        map[44] = 88
+        // Given a non-empty map:
+        data class Product(val name: String, val price: Int)
 
-        val value = map.minOfOrNull { it.value }
+        val map = HashMap<Int, Product>()
+        map[42] = Product("apple", 42)
+        map[43] = Product("banana", 43)
+        map[44] = Product("mango", 44)
 
-        assert(value == 84)
+        // Q: How to find the smallest price for all products? Allow null to be returned.
+        val price = map.minOfOrNull { entry -> entry.value.price }
+
+        assert(price == 42)
+    }
+
+    @Test
+    fun testMinOfEmptyCase() {
+        // Given a non-empty map:
+        data class Product(val name: String, val price: Int)
+
+        val map = HashMap<Int, Product>()
+
+        // Q: How to handle an empty map when searching for smallest price?
+
+        // Approach 1: allow null to be returned:
+        val price1 = map.minOfOrNull { it.value.price }
+        assert(price1 == null)
+
+        // Approach 2: catch the empty-case exception:
+        val price2 = try {
+            map.minOf { it.value.price }
+        } catch (e: NoSuchElementException) {
+            assert(true)
+        } catch (e: Throwable) {
+            assert(false)
+        }
+
+        assert(price2 == Unit)
     }
 }
