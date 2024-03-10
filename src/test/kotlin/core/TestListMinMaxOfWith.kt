@@ -33,14 +33,14 @@ class TestListMinMaxOfWith {
 
         // Approach 2: catch the empty-case exception
         val name2 = try {
-            products.minOfWithOrNull(compareBy { it.length }) { it.name }
+            products.minOfWith(compareBy { it.length }) { it.name }
         } catch (e: NoSuchElementException) {
             assert(true)
         } catch (e: Exception) {
             assert(false)
         }
 
-        assert(name2 == Unit || name2 == null) { "$name2" }
+        assert(name2 == Unit) { "$name2" }
     }
 
     @Test
@@ -72,14 +72,14 @@ class TestListMinMaxOfWith {
 
         // Approach 2: catch the empty-case exception
         val name2 = try {
-            products.maxOfWithOrNull(compareBy { it.length }) { it.name }
+            products.maxOfWith(compareBy { it.length }) { it.name }
         } catch (e: NoSuchElementException) {
             assert(true)
         } catch (e: Exception) {
             assert(false)
         }
 
-        assert(name2 == Unit || name2 == null) { "$name2" }
+        assert(name2 == Unit) { "$name2" }
     }
 
 }
