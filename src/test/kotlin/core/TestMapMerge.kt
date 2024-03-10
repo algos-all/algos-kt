@@ -9,7 +9,7 @@ class TestMapMerge {
         // Given a map:
         val map = mutableMapOf<Int, List<Int>>()
 
-        // What will the following code produce? What will be the state of the map?
+        // Q: What will the following code produce? What will be the state of the map?
         val result = map.merge(42, listOf(42)) { lft, rgt ->
             lft + rgt
         }
@@ -24,7 +24,7 @@ class TestMapMerge {
         val map = mutableMapOf<Int, List<Int>>()
         map[42] = listOf(84)
 
-        // What will the following code produce? What will be the state of the map?
+        // Q: What will the following code produce? What will be the state of the map?
         val result = map.merge(42, listOf(96)) { lft, rgt ->
             lft + rgt
         }
@@ -39,7 +39,7 @@ class TestMapMerge {
         val map = mutableMapOf<Int, Int>()
         map[42] = 84
 
-        // What will the following code produce? What will be the state of the map?
+        // Q: What will the following code produce? What will be the state of the map?
         val result = map.merge(42, 84) { _, _ -> null }
 
         assert(result == null)
