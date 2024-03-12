@@ -36,11 +36,11 @@ class TestMapMerge {
     @Test
     fun testMergeToDelete() {
         // Given a map:
-        val map = mutableMapOf<Int, Int>()
-        map[42] = 84
+        val map = mutableMapOf<Int, List<Int>>()
+        map[42] = listOf(84)
 
         // Q: What will the following code produce? What will be the state of the map?
-        val result = map.merge(42, 84) { _, _ -> null }
+        val result = map.merge(42, listOf(96)) { _, _ -> null }
 
         assert(result == null)
         assert(map[42] == null)
