@@ -87,7 +87,7 @@ class TestMapMinMaxOfWith {
         map[43] = Product("banana", 43)
         map[44] = Product("tangerine", 44)
 
-        // Q: How to find the smallest price for all products? Allow null to be returned.
+        // Q: How to find the shortest name of all products? Allow null to be returned.
         val name = map.minOfWithOrNull(compareBy { it.length }) { it.value.name }
 
         assert(name == "apple")
