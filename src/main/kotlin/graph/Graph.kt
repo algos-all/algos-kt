@@ -44,3 +44,18 @@ fun transposeV2(graph: Graph): Graph {
 
     return result
 }
+
+/**
+ * Given a directed graph, reverse all edges in it
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Glossary_of_graph_theory#transpose">Graph Theory: transpose</a>
+ */
+fun transposeV3(graph: Graph): Graph {
+    val transposedGraph = Graph()
+
+    graph.forEach { (node, nodes) ->
+        nodes.forEach { transposedGraph.merge(it, mutableListOf(node)) { lft, rgt -> lft.addAll(rgt); lft } }
+    }
+
+    return transposedGraph
+}
