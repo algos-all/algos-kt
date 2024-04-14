@@ -1,5 +1,5 @@
-name: build-and-test
-run-name: build and test
+name: Build and Test
+run-name: Build and Test
 on: [push]
 jobs:
   build-and-test-temurin-17:
@@ -16,3 +16,5 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
       - name: Build with Gradle
         run: ./gradlew build
+      - name: Test with Gradle
+        run: ./gradlew test
