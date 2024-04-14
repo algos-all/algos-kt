@@ -54,6 +54,7 @@ fun transposeV3(graph: Graph): Graph {
     val transposedGraph = Graph()
 
     graph.forEach { (node, nodes) ->
+        transposedGraph.merge(node, mutableListOf()) { lft, rgt -> lft.addAll(rgt); lft }
         nodes.forEach { transposedGraph.merge(it, mutableListOf(node)) { lft, rgt -> lft.addAll(rgt); lft } }
     }
 

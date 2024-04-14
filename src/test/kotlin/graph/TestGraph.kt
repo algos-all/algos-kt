@@ -1,23 +1,34 @@
 package graph
 
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 import strikt.api.expectThat
 import strikt.assertions.*
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+typealias TransposeType = (graph: Graph) -> Graph
+
 class TestGraph {
-    @Test
-    fun `empty graph`() {
-        assert(transposeV2(Graph()).isEmpty())
+
+    companion object {
+        @JvmStatic
+        fun transpose(): List<TransposeType> {
+            return listOf<TransposeType>(::transposeV1, ::transposeV2, ::transposeV3)
+        }
     }
 
-    @Test
-    fun `one node`() {
+    @ParameterizedTest
+    @MethodSource("transpose")
+    fun `empty graph`(transpose: TransposeType) {
+        assert(transpose(Graph()).isEmpty())
+    }
+
+    @ParameterizedTest
+    @MethodSource("transpose")
+    fun `one node`(transpose: TransposeType) {
         val graphOne = Graph()
         graphOne[42] = mutableListOf()
 
-        val graphTwo = transposeV2(graphOne)
+        val graphTwo = transpose(graphOne)
 
         expectThat(graphTwo)
             .hasSize(1)
@@ -27,14 +38,15 @@ class TestGraph {
             .isEmpty()
     }
 
-    @Test
-    fun `one edge`() {
+    @ParameterizedTest
+    @MethodSource("transpose")
+    fun `one edge`(transpose: TransposeType) {
         val graphOne = Graph()
         graphOne[42] = mutableListOf()
         graphOne[43] = mutableListOf()
         graphOne[42]?.add(43)
 
-        val graphTwo = transposeV2(graphOne)
+        val graphTwo = transpose(graphOne)
 
         expectThat(graphTwo)
             .isA<Graph>()
@@ -49,13 +61,14 @@ class TestGraph {
             .containsExactly(42)
     }
 
-    @Test
-    fun `simple cycle`() {
+    @ParameterizedTest
+    @MethodSource("transpose")
+    fun `simple cycle`(transpose: TransposeType) {
         val graphOne = Graph()
         graphOne[42] = mutableListOf(43)
         graphOne[43] = mutableListOf(42)
 
-        val graphTwo = transposeV2(graphOne)
+        val graphTwo = transpose(graphOne)
 
         expectThat(graphTwo)
             .isA<Graph>()
