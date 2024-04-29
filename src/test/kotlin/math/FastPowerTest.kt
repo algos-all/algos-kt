@@ -1,7 +1,5 @@
 package math
 
-import fpow0
-import fpow1
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import kotlin.math.pow
@@ -16,7 +14,7 @@ class FastPowerTest {
 
         @JvmStatic
         fun fastPower(): List<FastPowerType> {
-            return listOf<FastPowerType>(::fpow0, ::fpow1)
+            return listOf<FastPowerType>(::fastPower0, ::fastPower1, ::fastPower2)
         }
 
         @JvmStatic
