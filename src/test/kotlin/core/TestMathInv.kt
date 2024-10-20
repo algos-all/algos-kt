@@ -6,6 +6,7 @@ class TestMathInv {
 
     @Test
     fun testInvOfZero() {
+        // Q: what is the value of y?
         val x = 0
         val y = x.inv()
 
@@ -14,6 +15,7 @@ class TestMathInv {
 
     @Test
     fun testInvOfPlusOne() {
+        // Q: what is the value of y?
         val x = 1
         val y = x.inv()
 
@@ -22,6 +24,7 @@ class TestMathInv {
 
     @Test
     fun testInvOfMaxInt() {
+        // Q: what is the value of y?
         val x = Int.MAX_VALUE
         val y = x.inv()
 
@@ -30,6 +33,7 @@ class TestMathInv {
 
     @Test
     fun testInvOfMinusOne() {
+        // Q: what is the value of y?
         val x = -1
         val y = x.inv()
 
@@ -38,6 +42,7 @@ class TestMathInv {
 
     @Test
     fun testInvOfMinInt() {
+        // Q: what is the value of y?
         val x = Int.MIN_VALUE
         val y = x.inv()
 
