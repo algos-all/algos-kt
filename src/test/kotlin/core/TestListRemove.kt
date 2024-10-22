@@ -32,7 +32,7 @@ class TestListRemove {
         // Given a list:
         val xs = mutableListOf(1, 2, 3, 2, 4, 2)
 
-        // Q: How to remove all even integers from the list?
+        // Q: How to remove all even integers from the list in-place?
         val result = xs.removeIf { it % 2 == 0 }
 
         assert(result)
