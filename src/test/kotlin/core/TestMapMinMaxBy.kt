@@ -12,13 +12,13 @@ class TestMapMinMaxBy {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the largest price?
         val entry = map.maxBy { entry -> entry.value.price }
 
         assert(entry.key == 44)
-        assert(entry.value == Product("mango", 44))
+        assert(entry.value == Product("cucumber", 44))
     }
 
     @Test
@@ -29,7 +29,7 @@ class TestMapMinMaxBy {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the largest price? Allow null to be returned.
         val entry = map.maxByOrNull { it.value.price }
@@ -72,7 +72,7 @@ class TestMapMinMaxBy {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the smallest price?
         val entry = map.minBy { entry -> entry.value.price }
@@ -89,7 +89,7 @@ class TestMapMinMaxBy {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the smallest price? Allow null to be returned.
         val entry = map.minByOrNull { it.value.price }

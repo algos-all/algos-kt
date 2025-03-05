@@ -9,7 +9,7 @@ class TestListMinMaxWith {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the cheapest product in this list?
         // Warning: you're *not* allowed to use minBy!
@@ -52,7 +52,7 @@ class TestListMinMaxWith {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the cheapest product in this list?
         // Warning: you're *not* allowed to use maxBy!
@@ -60,8 +60,8 @@ class TestListMinMaxWith {
         val product1 = products.maxWith(compareBy { it.price })
         val product2 = products.maxWith { lft, rgt -> lft.price.compareTo(rgt.price) }
 
-        assert(product1.name == "mango")
-        assert(product2.name == "mango")
+        assert(product1.name == "cucumber")
+        assert(product2.name == "cucumber")
     }
 
     @Test

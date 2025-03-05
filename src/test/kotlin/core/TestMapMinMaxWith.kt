@@ -12,7 +12,7 @@ class TestMapMinMaxWith {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the largest price?
         // Q: You are not allowed to use maxBy!
@@ -20,9 +20,9 @@ class TestMapMinMaxWith {
         val entry2 = map.maxWith { lft, rgt -> lft.value.price.compareTo(rgt.value.price) }
 
         assert(entry1.key == 44)
-        assert(entry1.value == Product("mango", 44))
+        assert(entry1.value == Product("cucumber", 44))
         assert(entry2.key == 44)
-        assert(entry2.value == Product("mango", 44))
+        assert(entry2.value == Product("cucumber", 44))
     }
 
     @Test
@@ -33,7 +33,7 @@ class TestMapMinMaxWith {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the largest price?
         // Q: You are not allowed to use maxBy! Allow null to be returned!
@@ -41,9 +41,9 @@ class TestMapMinMaxWith {
         val entry2 = map.maxWithOrNull { lft, rgt -> lft.value.price.compareTo(rgt.value.price) }
 
         assert(entry1?.key == 44)
-        assert(entry1?.value == Product("mango", 44))
+        assert(entry1?.value == Product("cucumber", 44))
         assert(entry2?.key == 44)
-        assert(entry2?.value == Product("mango", 44))
+        assert(entry2?.value == Product("cucumber", 44))
     }
 
     @Test
@@ -79,7 +79,7 @@ class TestMapMinMaxWith {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the smallest price?
         // Q: You are not allowed to use minBy!
@@ -100,7 +100,7 @@ class TestMapMinMaxWith {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the entry with the smallest price?
         // Q: You are not allowed to use minBy!

@@ -12,7 +12,7 @@ class TestMapMinMaxOf {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the largest price for all products?
         val price = map.maxOf { entry -> entry.value.price }
@@ -28,7 +28,7 @@ class TestMapMinMaxOf {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the largest price for all products? Allow null to be returned.
         val price = map.maxOfOrNull { entry -> entry.value.price }
@@ -69,7 +69,7 @@ class TestMapMinMaxOf {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the smallest price for all products?
         val price = map.minOf { entry -> entry.value.price }
@@ -85,7 +85,7 @@ class TestMapMinMaxOf {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the smallest price for all products? Allow null to be returned.
         val price = map.minOfOrNull { entry -> entry.value.price }

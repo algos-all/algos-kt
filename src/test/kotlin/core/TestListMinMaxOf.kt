@@ -9,7 +9,7 @@ class TestListMinMaxOf {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the smallest product price in the list?
         // Warning: the empty-case exception is possible!
@@ -48,7 +48,7 @@ class TestListMinMaxOf {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the largest product price in the list?
         // Warning: the empty-case exception is possible!

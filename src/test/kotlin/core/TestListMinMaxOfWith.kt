@@ -9,13 +9,13 @@ class TestListMinMaxOfWith {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("amla", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the name of the product that has the shortest length?
         // Warning: the empty-case exception is possible!
         val name = products.minOfWith(compareBy { it.length }) { it.name }
 
-        assert(name == "amla")
+        assert(name == "apple")
     }
 
     @Test
@@ -48,13 +48,13 @@ class TestListMinMaxOfWith {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("amla", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the name of the product that has the biggest length?
         // Warning: the empty-case exception is possible!
         val name = products.maxOfWith(compareBy { it.length }) { it.name }
 
-        assert(name == "banana")
+        assert(name == "cucumber")
     }
 
     @Test

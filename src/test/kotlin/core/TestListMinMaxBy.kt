@@ -9,7 +9,7 @@ class TestListMinMaxBy {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the cheapest product in this list?
         // Warning: the empty-case exception is possible!
@@ -48,13 +48,13 @@ class TestListMinMaxBy {
         // Given the following non-empty list of products:
         data class Product(val name: String, val price: Int)
 
-        val products = listOf(Product("apple", 42), Product("banana", 43), Product("mango", 44))
+        val products = listOf(Product("apple", 42), Product("banana", 43), Product("cucumber", 44))
 
         // How to find the most expensive product in this list?
         // Warning: the empty-case exception is possible!
         val product = products.maxBy { it.price }
 
-        assert(product.name == "mango")
+        assert(product.name == "cucumber")
     }
 
     @Test

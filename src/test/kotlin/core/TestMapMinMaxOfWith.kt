@@ -12,12 +12,12 @@ class TestMapMinMaxOfWith {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the longest name of any product?
         val name = map.maxOfWith(compareBy { it.length }) { it.value.name }
 
-        assert(name == "banana")
+        assert(name == "cucumber")
     }
 
     @Test
@@ -28,12 +28,12 @@ class TestMapMinMaxOfWith {
         val map = HashMap<Int, Product>()
         map[42] = Product("apple", 42)
         map[43] = Product("banana", 43)
-        map[44] = Product("mango", 44)
+        map[44] = Product("cucumber", 44)
 
         // Q: How to find the longest name of any product? Allow null to be returned.
         val name = map.maxOfWithOrNull(compareBy { it.length }) { it.value.name }
 
-        assert(name == "banana")
+        assert(name == "cucumber")
     }
 
     @Test
